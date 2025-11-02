@@ -22,6 +22,15 @@ Puedes revisar la version publicada en [https://karavena.github.io/ReportesFACSO
 
 ## Estructura principal del repositorio
 
+
+El repositorio organiza el contenido en capítulos base (`00–06`), apéndices, e includes para portadas y metadatos. La identidad visual se controla en `assets/styles.scss` y el diseño PDF en `reportes-facso-plantilla.tex`. La carpeta `refs/` aloja `apa.csl` y `referencias.bib`. Se sigue el [protocolo IPO](https://lisacoes.com/protocolos/a-ipo-rep/) con `input/` (datos), `procesamiento/` (scripts/notebooks) y `output/` (tablas/figuras listas).
+
+La plantilla permite integrar tablas y gráficos que se actualizan al cambiar los datos. Las citas se gestionan con Pandoc usando claves de `refs/referencias.bib` (formato BibTeX/CSL JSON), con estilo APA por defecto (`refs/apa.csl`). Esto asegura consistencia entre texto, evidencias y bibliografía en ambas salidas (HTML y PDF).
+
+El despliegue web se puede realizar mediante [**GitHub Pages**](https://www.youtube.com/watch?v=8IdBAysf-U4) desde `docs/`. 
+
+
+
 - `00-prefacio.qmd` a `06-conclusiones.qmd`: capitulos base del informe.
 - `apendices/`: archivos QMD para anexos (`A-encuestas.qmd`, `B-tablas.qmd`).
 - `includes/`: fragmentos HTML/TeX utilizados en cabeceras, portadas, botones y scripts.
