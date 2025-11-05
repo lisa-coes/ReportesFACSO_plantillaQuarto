@@ -1,6 +1,6 @@
 # Plantilla de reportes FACSO
 
-![Equipo LISA 2025](https://lisacoes.com/resources/imagenes/sharing-default.png)
+![Equipo LISA 2025](assets/sharing-default.png)
 
 Esta plantilla Quarto permite crear informes profesionales para proyectos de investigacion, cursos y documentos institucionales de FACSO. El proposito del repositorio es entregar un punto de partida completo: estructura de capitulos, manejo de datos, estilos visuales coherentes y archivos auxiliares para exportar a HTML y PDF. El repositorio se organiza siguiendo las practicas reproducibles del  [protocolo IPO](https://lisacoes.com/protocolos/a-ipo-rep/), con carpetas diferenciadas para `input/`, `procesamiento/` y `output/`.
 
