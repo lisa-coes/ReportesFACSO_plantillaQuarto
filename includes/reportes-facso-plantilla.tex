@@ -335,6 +335,52 @@
 \renewcommand{\cftsubsecfont}{\normalfont\color{black}}
 
 \makeatletter
+\newcommand{\facso@iflist}[4]{%
+  \begingroup
+    \def\addvspace##1{}%
+    \def\numberline##1{##1}%
+    \def\facso@target{#2}%
+    \newcount\facso@entrycount
+    \facso@entrycount=0\relax
+    \long\def\contentsline##1##2##3{%
+      \def\facso@this{##1}%
+      \ifx\facso@this\facso@target
+        \advance\facso@entrycount\@ne
+      \fi
+    }%
+    \InputIfFileExists{\jobname.#1}{}{}%
+  \endgroup
+  \ifnum\facso@entrycount>0\relax
+    #3%
+  \else
+    #4%
+  \fi}
+\renewcommand{\listoffigures}{%
+  \facso@iflist{lof}{figure}{%
+    \cleardoublepage
+    \phantomsection
+    \addchap*{Listado de Figuras}% use KOMA to set heading and marks
+    \thispagestyle{scrheadings}% ensure header line is shown
+    \markboth{Listado de Figuras}{Listado de Figuras}% keep header label visible
+    \addcontentsline{toc}{chapter}{Listado de Figuras}%
+    \@starttoc{lof}%
+    \cleardoublepage
+    \automark[chapter]{chapter}%
+  }{}}
+\renewcommand{\listoftables}{%
+  \facso@iflist{lot}{table}{%
+    \cleardoublepage
+    \phantomsection
+    \addchap*{Listado de Tablas}% use KOMA to set heading and marks
+    \thispagestyle{scrheadings}% ensure header line is shown
+    \markboth{Listado de Tablas}{Listado de Tablas}% keep header label visible
+    \addcontentsline{toc}{chapter}{Listado de Tablas}%
+    \@starttoc{lot}%
+    \cleardoublepage
+    \automark[chapter]{chapter}%
+  }{}}
+\makeatother
+
 \newcommand{\facsofrontheaderline}[1]{\markboth{#1}{#1}}
 \renewcommand{\tableofcontents}{%
   \cleardoublepage
@@ -346,27 +392,6 @@
   \@starttoc{toc}%
   \cleardoublepage
   \automark[chapter]{chapter}}
-\renewcommand{\listoffigures}{%
-  \cleardoublepage
-  \phantomsection
-  \addchap*{Listado de Figuras}% use KOMA to set heading and marks
-  	hispagestyle{scrheadings}% ensure header line is shown
-  \markboth{Listado de Figuras}{Listado de Figuras}% keep header label visible
-  \addcontentsline{toc}{chapter}{Listado de Figuras}%
-  \@starttoc{lof}%
-  \cleardoublepage
-  \automark[chapter]{chapter}}
-\renewcommand{\listoftables}{%
-  \cleardoublepage
-  \phantomsection
-  \addchap*{Listado de Tablas}% use KOMA to set heading and marks
-  	hispagestyle{scrheadings}% ensure header line is shown
-  \markboth{Listado de Tablas}{Listado de Tablas}% keep header label visible
-  \addcontentsline{toc}{chapter}{Listado de Tablas}%
-  \@starttoc{lot}%
-  \cleardoublepage
-  \automark[chapter]{chapter}}
-\makeatother
 % Reduce vertical space around floats
 \setlength{\abovecaptionskip}{6pt}
 \setlength{\belowcaptionskip}{6pt}

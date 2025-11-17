@@ -30,8 +30,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "TeX Gyre Termes", "Noto Serif", Georgia, serif;
-  line-height: 1.65;
-  font-size: 17px;
+  line-height: 1.5;
+  font-size: 12pt;
 }
 
 img,
@@ -361,18 +361,19 @@ nav.page-navigation .nav-page a:hover {
   text-align: left;
 }
 
+// Organiza numero-capitulo + titulo con espacio mas evidente
 .sidebar .sidebar-menu-container .menu-text {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1ch) 1fr;
-  column-gap: 0;
-  align-items: center;
+  display: inline-flex;
+  align-items: baseline;
 }
 
 .sidebar .sidebar-menu-container .menu-text .chapter-number {
-  justify-self: end;
+  display: inline-flex;
+  justify-content: flex-end;
+  min-width: 2ch;
+  margin-right: 0.55rem;
   text-align: right;
   font-variant-numeric: tabular-nums;
-  margin: 0;
 }
 
 .sidebar .sidebar-menu-container .menu-text .chapter-title {
